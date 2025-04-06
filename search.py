@@ -9,7 +9,7 @@ from db import get_connection
 
 
 # Load model
-#model = SentenceTransformer('all-MiniLM-L6-v2')
+model = SentenceTransformer('all-MiniLM-L6-v2')
 
 # Load FAISS index
 try:
@@ -18,7 +18,7 @@ except Exception as e:
     print("Error loading FAISS index:", e)
     index = None
 
-    
+
 # Load metadata
 with open("assessments.json", "r") as f:
     metadata = json.load(f)
@@ -41,6 +41,9 @@ def get_model():
 
 #defining  a function that searches for specific assessments. if found return assessment ids.
 def search_assessments(usr_query):
+    if index is None:
+        raise RuntimeError("FAISS index not loaded.")
+        
     model = get_model()
 
     query_vector = model.encode([usr_query])
