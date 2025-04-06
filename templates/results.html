@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommendations</title>
+</head>
+<body>
+    <h2>Top Assessments for: "{{ query }}"</h2>
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>Assessment Name</th>
+                <th>URL</th>
+                <th>Remote Testing</th>
+                <th>Adaptive/IRT Support</th>
+                <th>Duration</th>
+                <th>Test Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in results %}
+            <tr>
+                <td>{{ r[1] }}</td>
+                <td><a href="{{ r[2] }}" target="_blank">Link</a></td>
+                <td>{{ 'Yes' if r[3] else 'No' }}</td>
+                <td>{{'Yes' if r[6] else 'No'}}</td>
+                <td>{{ r[4] }}</td>
+                <td>{{ r[5] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <br>
+    <a href = "/" style="text-decoration: underline;">Go Back</a>
+    
+</body>
+</html>
