@@ -22,10 +22,22 @@ with open("assessments.json", "r") as f:
 conn = get_connection()
 cur = conn.cursor()
 
+#loading model only once when needed.
+_model = None
+
+def get_model():
+    global _model
+
+    if _model is None:
+        _model = SentenceTransformer('all-MiniLM-L6-v2')
+    
+    return _model
 
 
 #defining  a function that searches for specific assessments. if found return assessment ids.
 def search_assessments(usr_query):
+    model = get_model()
+
     query_vector = model.encode([usr_query])
     D,I = index.search(np.array(query_vector),k=3)
     top_ids = [metadata[idx]["id"] for idx in I[0]]
