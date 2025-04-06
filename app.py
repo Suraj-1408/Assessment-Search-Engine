@@ -1,3 +1,4 @@
+import os
 from flask import Flask,request,jsonify, render_template
 from search import search_assessments,get_assessements_details
 
@@ -47,4 +48,6 @@ def api_search():
 
 
 if __name__ == "__main__":
-    app.run(debug= True,port = 5001)
+    #app.run(debug= True,port = 5001)  local port.
+    port = int(os.environ.get('PORT',10000))
+    app.run(host = '0.0.0.0',port = port)
