@@ -3,6 +3,4 @@ gunicorn==21.2.0
 psycopg2-binary==2.9.9
 faiss-cpu==1.7.4
 sentence-transformers==2.2.2
-transformers==4.28.1
-torch==1.13.1
 python-dotenv==1.0.1
