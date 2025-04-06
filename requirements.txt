@@ -1,0 +1,7 @@
+flask
+gunicorn
+psycopg2-binary
+faiss-cpu
+sentence-transformers
+python-dotenv
+
