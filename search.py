@@ -4,7 +4,7 @@ import faiss
 import json
 from sentence_transformers import SentenceTransformer
 import numpy as np
-from tabulate import tabulate 
+#from tabulate import tabulate 
 from db import get_connection
 
 
