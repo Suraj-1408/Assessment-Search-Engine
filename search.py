@@ -9,11 +9,16 @@ from db import get_connection
 
 
 # Load model
-model = SentenceTransformer('all-MiniLM-L6-v2')
+#model = SentenceTransformer('all-MiniLM-L6-v2')
 
 # Load FAISS index
-index = faiss.read_index("faiss_index.index")
+try:
+    index = faiss.read_index("faiss_index.index")
+except Exception as e:
+    print("Error loading FAISS index:", e)
+    index = None
 
+    
 # Load metadata
 with open("assessments.json", "r") as f:
     metadata = json.load(f)
