@@ -12,12 +12,23 @@ def index():
 
 @app.route("/results",methods = ["POST"])
 def show_results():
-    query = request.form.get("query")
-    top_ids = search_assessments(query)
-    results = get_assessements_details(top_ids)
 
-    return render_template("results.html",query=query,results=results)
+    #query = request.form.get("query")
+    #top_ids = search_assessments(query)
+    #results = get_assessements_details(top_ids)
 
+    #return render_template("results.html",query=query,results=results)
+    try:
+        query = request.form.get("query")
+        if not query:
+            return "No query provided", 400
+
+        top_ids = search_assessments(query)
+        results = get_assessements_details(top_ids)
+
+        return render_template("results.html", query=query, results=results)
+    except Exception as e:
+        return f"<h3>Internal Server Error:</h3><pre>{str(e)}</pre>", 500
 
 @app.route("/api/search",methods=["POST"])
 def api_search():
@@ -48,6 +59,6 @@ def api_search():
 
 
 if __name__ == "__main__":
-    #app.run(debug= True,port = 5001)  local port.
+    #app.run(debug= True,port = 5001) 
     port = int(os.environ.get('PORT',10000))
     app.run(host = '0.0.0.0',port = port)
