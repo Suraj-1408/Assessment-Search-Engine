@@ -41,10 +41,10 @@ cur = conn.cursor()
 _model = None
 
 def get_model():
-    #global _model
+    global _model
 
-    #if _model is None:
-    #    _model = SentenceTransformer('all-MiniLM-L6-v2')
+    if _model is None:
+        _model = SentenceTransformer('all-MiniLM-L6-v2')
     
     return _model
 
@@ -55,6 +55,9 @@ def search_assessments(usr_query):
         raise RuntimeError("FAISS index not loaded.")
         
     model = get_model()
+
+    print(f"User query: {usr_query}")
+    print(f"Using model: {model}")
 
     query_vector = model.encode([usr_query])
     D,I = index.search(np.array(query_vector),k=3)
