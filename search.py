@@ -1,4 +1,5 @@
 #if __name__ == "__main__":
+import os
 import psycopg2
 import faiss
 import json
@@ -8,19 +9,28 @@ import numpy as np
 from db import get_connection
 
 
+
+# Define base path relative to current file
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
 # Load model
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
 # Load FAISS index
 try:
-    index = faiss.read_index("faiss_index.index")
+    #index = faiss.read_index("faiss_index.index")
+    index_path = os.path.join(BASE_DIR, "faiss_index.index")
+    index = faiss.read_index(index_path)
+
 except Exception as e:
     print("Error loading FAISS index:", e)
     index = None
 
 
 # Load metadata
-with open("assessments.json", "r") as f:
+#with open("assessments.json", "r") as f:
+with open(os.path.join(BASE_DIR, "assessments.json"), "r") as f:
     metadata = json.load(f)
 
 
@@ -31,10 +41,10 @@ cur = conn.cursor()
 _model = None
 
 def get_model():
-    global _model
+    #global _model
 
-    if _model is None:
-        _model = SentenceTransformer('all-MiniLM-L6-v2')
+    #if _model is None:
+    #    _model = SentenceTransformer('all-MiniLM-L6-v2')
     
     return _model
 
