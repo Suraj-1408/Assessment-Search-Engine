@@ -50,7 +50,7 @@ def api_search():
             "remote_testing_support":"Yes" if r[3] else "No",
             "duration":r[4],
             "test_type":r[5],
-            "adaptive_support":"Yes" if [6] else "No",
+            "adaptive_support":"Yes" if r[6] else "No",
         }
         for r in results
     ]
