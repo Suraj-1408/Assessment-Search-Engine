@@ -15,7 +15,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 # Load model
-model = SentenceTransformer('all-MiniLM-L6-v2')
+#model = SentenceTransformer('all-MiniLM-L6-v2')
+model = SentenceTransformer('paraphrase-MiniLM-L3-v2')
 
 # Load FAISS index
 try:
