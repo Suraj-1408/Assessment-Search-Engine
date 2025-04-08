@@ -40,11 +40,11 @@ Deployment: Render for backend + DB
 # Usage
 1) Clone the repository: 
 ```
-git clone https://github.com/your-username/shl-assessment-recommender.git
+[git clone https://github.com/Suraj-1408/Assessment-Search-Engine.git
 ```  
 2) Navigate to Directory
 ```
-cd shl-assessment-recommender
+cd Assessment-Search-Engine
 ```
 3) Create and activate virtual environment:  
 
