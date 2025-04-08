@@ -2,21 +2,21 @@
 This project is a web-based assessment recommendation system that allows users to input a job description or skill and receive the relevant SHL assessment links.
 
 # Features
-1)Accepts natural language queries (job roles, skills, or descriptions).
-2)The System Recommends up to 3 best-matched assessments from SHL’s catalog.
+1)Accepts natural language queries (job roles, skills, or descriptions).  
+2)The System Recommends up to 3 best-matched assessments from SHL’s catalog.  
 
 ## Results include:
-1)Assessment Name (with link)
-2)Remote Testing Support (Yes/No)
-3)Adaptive/IRT Support (Yes/No)
-4)Duration
-5)Test Type
+1)Assessment Name (with link)  
+2)Remote Testing Support (Yes/No)  
+3)Adaptive/IRT Support (Yes/No)  
+4)Duration  
+5)Test Type  
 
 
 # Tech Stack
-Backend: Python, Flask
-Database: PostgreSQL
-Semantic Search: SentenceTransformers (all-MiniLM-L6-v2), FAISS
+Backend: Python, Flask  
+Database: PostgreSQL  
+Semantic Search: SentenceTransformers (all-MiniLM-L6-v2), FAISS  
 Frontend: HTML + basic CSS
 Deployment: Render for backend + DB
 
